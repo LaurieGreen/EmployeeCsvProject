@@ -1,3 +1,4 @@
 /.gradle/
 /.idea/
 /src/main/config.properties
+/build/
