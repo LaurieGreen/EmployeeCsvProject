@@ -1,21 +1,22 @@
 import config.management.ConfigManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeRecordScanner {
 	private final EmployeeFileReader employeeFileReader = new EmployeeFileReader();
 
-	public void returnEachLine() {
+	public List<String[]> generateEmployeeData() {
+		List<String[]> employeeRawData = new ArrayList<>();
 		Scanner scanner = new Scanner(employeeFileReader.employeeFileReader(ConfigManager.getEmployeeCsvLocation()));
-
+		scanner.nextLine(); // to skip the CSV headers
 		while (scanner.hasNext()){
-			System.out.println(Arrays.toString(scanner.nextLine().split(",")));
+			employeeRawData.add( scanner.nextLine().split(","));
 		}
-	}
 
-	public static void main(String[] args) {
-		EmployeeRecordScanner employeeRecordScanner = new EmployeeRecordScanner();
-		employeeRecordScanner.returnEachLine();
+		return employeeRawData;
 	}
 }
