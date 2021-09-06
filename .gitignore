@@ -2,3 +2,5 @@
 /.idea/
 /src/main/config.properties
 /build/
+/src/main/resources/log4j.properties
+/src/main/log/
